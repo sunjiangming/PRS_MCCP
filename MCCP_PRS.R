@@ -114,7 +114,9 @@ X_test=data.matrix(df[!NA_PRS_te,c_idx])
 p=predictCCP(parameters, X_train, y_train, X_test, y_test)
 
 #0: control, 1:case
-y_pred=
+y_pred=y_test
+y_pred[p$p1>p$p0]=1
+
 if( length(c_idx)>1 ) {
 	output=data.frame(Y_test_label=y_pred, p0=p$p0, p1=p$p1, score=as.numeric(X_test[,1]))
 }
