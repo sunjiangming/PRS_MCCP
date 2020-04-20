@@ -10,7 +10,8 @@ te_file=args[3]
 y_col=eval(parse(text=args[4]))
 prs_col=eval(parse(text=args[5]))
 covar_col=eval(parse(text=args[6]))
-ofile=args[7]
+impute=eval(parse(text=args[7]))
+ofile=args[8]
 
 computePValues <- function(parameters,X_properTrain,y_properTrain,X_calibration,y_calibration,X_test,y_test){
 
@@ -77,7 +78,7 @@ predictCCP <- function(parameters,X_train,y_train,X_test,y_test){
 parameters <- list(
 	seed = 2018
 	multiPRS   = 0 
-	cores = 1
+	cores = 2
 )
 
 setwd(wdir)
@@ -85,64 +86,40 @@ set.seed(parameters$seed)
 
 df<-fread(tr_file,head=T)
 df=as.data.frame(df)
-		    
+
 df2<-fread(te_file,head=T)
-df2=as.data.frame(df2)		 
-
-c_idx=c(prs_col,covar_col)
-if(length(prs_col)==1) {
-	NA_PRS=is.na(df[,prs_col])
-} else {
-	NA_PRS=is.na(df[,prs_col[1]])
-	parameters$multiPRS=1
-}
-
-label=df[!NA_PRS,y_col]
-pid=df[!NA_PRS,1]
-df=df[!NA_PRS,c_idx]
+df2=as.data.frame(df2)
 
 ## impute missing values by 10-NN
-if(sum(is.na(df))>0){
+if(impute==1){
 	imputed2 <- impute.knn(as.matrix(df),k=10,rng.seed=parameters$seed)
 	df=imputed2$data
+	
+	imputed2 <- impute.knn(as.matrix(df2),k=10,rng.seed=parameters$seed)
+	df2=imputed2$data
 }
-
-## predicting
-X_train = data.matrix(df)
-y_train = label
 		    
+c_idx=c(prs_col,covar_col)
+
+NA_PRS_tr=is.na(df[,prs_col])
+NA_PRS_te=is.na(df2[,prs_col])
+## training set, 0: control, 1:case
+y_train=df[!NA_PRS_tr,y_col]
+X_train=data.matrix(df[!NA_PRS_tr,c_idx])
+## test set		    
+y_test=df[!NA_PRS_te,y_col]
+X_test=data.matrix(df[!NA_PRS_te,c_idx])
+
+## predicting		    
 p=predictCCP(parameters, X_train, y_train, X_test, y_test)
 
+#0: control, 1:case
+y_pred=
 if( length(c_idx)>1 ) {
-	output=data.frame(pid=test_pid,Y_test_label=y_test, p0=p$p0, p1=p$p1, score=as.numeric(X_test[,1]))
+	output=data.frame(Y_test_label=y_pred, p0=p$p0, p1=p$p1, score=as.numeric(X_test[,1]))
 }
 if( length(c_idx)==1 ) {
-	output=data.frame(pid=test_pid,Y_test_label=y_test, p0=p$p0, p1=p$p1, score=as.numeric(X_test))
+	output=data.frame(Y_test_label=y_pred, p0=p$p0, p1=p$p1, score=as.numeric(X_test))
 }
-		    
-write.table(output,ofile,append=T, quote=F,sep="\t",row.names=F,col.names=F)
-		    ##K fold
-
-idx = createFolds(label, k = 5, list = F, returnTrain = F)
-for(i in 1:5) {
-	#split into training and test set
-	test_idx = idx == i
-	X_train = data.matrix(df)[!test_idx,]
-	y_train = label[!test_idx]
-		
-	X_test = data.matrix(df)[test_idx,]
-	y_test = label[test_idx]
-	test_pid=pid[test_idx]
-	
-	p=predictCCP(parameters, X_train, y_train, X_test, y_test)
-	
-	if( length(c_idx)>1 ) {
-	  output=data.frame(pid=test_pid,Y_test_label=y_test, p0=p$p0, p1=p$p1, score=as.numeric(X_test[,1]))
-    	}
-    	if( length(c_idx)==1 ) {
-	  output=data.frame(pid=test_pid,Y_test_label=y_test, p0=p$p0, p1=p$p1, score=as.numeric(X_test))
- 	}
-
-	if(i==1) { write.table(output,ofile,quote=F,sep="\t",row.names=F)
-	} else write.table(output,ofile,append=T, quote=F,sep="\t",row.names=F,col.names=F)
-}
+	    
+write.table(output,ofile,append=F, quote=F,sep="\t",row.names=F,col.names=F)
