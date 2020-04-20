@@ -5,11 +5,12 @@ lapply(pkgs, require, character.only = T)
 
 args = commandArgs(trailingOnly=TRUE)
 wdir=args[1]
-ifile=args[2]
-y_col=eval(parse(text=args[3]))
-prs_col=eval(parse(text=args[4]))
-covar_col=eval(parse(text=args[5]))
-ofile=args[6]
+tr_file=args[2]
+te_file=args[3]
+y_col=eval(parse(text=args[4]))
+prs_col=eval(parse(text=args[5]))
+covar_col=eval(parse(text=args[6]))
+ofile=args[7]
 
 computePValues <- function(parameters,X_properTrain,y_properTrain,X_calibration,y_calibration,X_test,y_test){
 
@@ -80,12 +81,15 @@ parameters <- list(
 )
 
 setwd(wdir)
+set.seed(parameters$seed)
 
-df<-fread(ifile,head=T)
+df<-fread(tr_file,head=T)
 df=as.data.frame(df)
+		    
+df2<-fread(te_file,head=T)
+df2=as.data.frame(df2)		 
 
 c_idx=c(prs_col,covar_col)
-
 if(length(prs_col)==1) {
 	NA_PRS=is.na(df[,prs_col])
 } else {
@@ -103,8 +107,22 @@ if(sum(is.na(df))>0){
 	df=imputed2$data
 }
 
-##K fold
-set.seed(parameters$seed)
+## predicting
+X_train = data.matrix(df)
+y_train = label
+		    
+p=predictCCP(parameters, X_train, y_train, X_test, y_test)
+
+if( length(c_idx)>1 ) {
+	output=data.frame(pid=test_pid,Y_test_label=y_test, p0=p$p0, p1=p$p1, score=as.numeric(X_test[,1]))
+}
+if( length(c_idx)==1 ) {
+	output=data.frame(pid=test_pid,Y_test_label=y_test, p0=p$p0, p1=p$p1, score=as.numeric(X_test))
+}
+		    
+write.table(output,ofile,append=T, quote=F,sep="\t",row.names=F,col.names=F)
+		    ##K fold
+
 idx = createFolds(label, k = 5, list = F, returnTrain = F)
 for(i in 1:5) {
 	#split into training and test set
