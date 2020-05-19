@@ -16,5 +16,5 @@ ofile=$7
 
 #without any covariates
 Rscript MCCP_PRS.R $wdir $tr_file $te_file $y_col $prs_col 'c()' $ofile
-#single with covariates
+#with covariates
 Rscript MCCP_PRS.R $wdir $tr_file $te_file $y_col $prs_col 'c("$covar_col")' $ofile
