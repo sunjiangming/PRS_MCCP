@@ -1,5 +1,5 @@
 # PRS_MCP
-A R script on translating PRS for clinical use by estimating the confidence of risk prediction at an individual level  
+A R script on translating PRS for clinical use by estimating the confidence bound of risk prediction at an individual level  
 # How to use
 sh do_mccp_prs.sh $wdir $tr_file $te_file $y_col $prs_col 'c("$covar_col")' $ofile</br>
 </br>$widr: working directory
