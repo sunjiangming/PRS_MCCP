@@ -8,12 +8,12 @@ library(caret)
 library(MLmetrics)
 
 args = commandArgs(trailingOnly=TRUE)
-wdir="/Users/med-js5/OneDrive/Data/UKB/MCCP/"
-gname="MCCP" #
-ifile=args[1] #"BRCA_mccp_p05_PRS_pheno.pred.addPCs"
+wdir=ags[1]
+gname="MCCP"
+ifile=args[2]
 n_min=49
 score="score"
-disease=args[2] #
+disease=args[3]
 ofile=paste(disease,"_",sep="")
 
 returnConMatrix <- function(p0,p1,y,alpha) {
