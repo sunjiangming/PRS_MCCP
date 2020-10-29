@@ -156,6 +156,6 @@ for(i in 1:len){
 
 d1=rbind(data.frame(alpha=eff,ppv=mccp_ppv,g=rep(gname,len),col=ranges,disease=rep(disease,len)),data.frame(alpha=eff,ppv=ppv,g=rep("Empirical",len),col=rep(NA,len),disease=rep(disease,len) ))
 d2=rbind(data.frame(alpha=eff,npv=mccp_npv,g=rep(gname,len),col=ranges,disease=rep(disease,len)),data.frame(alpha=eff,npv=npv,g=rep("Empirical",len ),col=rep(NA,len),disease=rep(disease,len)) )
-d4=rbind(data.frame(alpha=eff,auc=auc,g=rep(gname,len),col=ranges,disease=rep(disease,len)),data.frame(alpha=eff,auc=auc_top,g=rep("Empirical",len),col=rep(NA,len),disease=rep(disease,len)) )
+d3=rbind(data.frame(alpha=eff,auc=auc,g=rep(gname,len),col=ranges,disease=rep(disease,len)),data.frame(alpha=eff,auc=auc_top,g=rep("Empirical",len),col=rep(NA,len),disease=rep(disease,len)) )
 
-save(d1, d2,d3, d4, file = paste(disease,".RData",sep=""))
+save(d1, d2,d3, file = paste(disease,".RData",sep=""))
