@@ -6,13 +6,15 @@ A R script on translating PRS for clinical use by estimating the confidence boun
 
   `git clone https://github.com/sunjiangming/PRS_MCP`
 
-- Dependencies:
+- Prerequisites:
 
     R packages: "glmnet", "doParallel", "foreach", "data.table", "caret", "impute"
     
     R packages (for plot):"rms", "viridis", "ggplot2", "gridExtra", "MLmetrics"
 
 # Using MCCP
+
+Here you can esimate an individual’s disease susceptibility by
 
     sh do_mccp_prs.sh $wdir $tr_file $te_file $y_col $prs_col c("$covar_col") $ofile
 
@@ -34,4 +36,5 @@ A R script on translating PRS for clinical use by estimating the confidence boun
 
 # Using MCCP in the way of cross-validation
 
-  This is script used in the paper
+  This is script used in the paper to evaluate peformance of MCCP in group when compared to classical approach (top x% and bottom x% of PRS).
+  
