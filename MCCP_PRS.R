@@ -114,15 +114,20 @@ X_test=df[!NA_te,c_idx]
 ## predicting		    
 p=predictCCP(parameters, X_train, y_train, X_test, y_test)
 
-#0: control, 1:case
-y_pred=y_test
+#Report status for the prediction, 0: control, 1:case
+y_pred=rep(NA,length(y_test))
 y_pred[p$p1>p$p0]=1
+y_pred[p$p1<=p$p0]=0
+pred_conf=1.0-apply(cbind(p$p0,p$p1),1,min)
+pred_cred=apply(cbind(p$p0,p$p1),1,max)
 
 if( length(c_idx)>1 ) {
-	output=data.frame(Y_test_label=y_pred, p0=p$p0, p1=p$p1, score=as.numeric(X_test[,1]))
+	output=data.frame(Y_test_label=y_pred, pred_cred, pred_conf, p0=p$p0, p1=p$p1, score=as.numeric(X_test[,1]))
 }
 if( length(c_idx)==1 ) {
-	output=data.frame(Y_test_label=y_pred, p0=p$p0, p1=p$p1, score=as.numeric(X_test))
+	output=data.frame(Y_test_label=y_pred, pred_cred, pred_conf, p0=p$p0, p1=p$p1, score=as.numeric(X_test))
 }
+
+colnames(output)=c('predictStatus','predictCredibility', 'predictConfidence', 'prob_control','prob_case','PRS')
 	    
-write.table(output,ofile,append=F, quote=F,sep="\t",row.names=F,col.names=F)
+write.table(output,ofile,append=F, quote=F,sep="\t",row.names=F)
