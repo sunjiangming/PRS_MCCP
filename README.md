@@ -13,12 +13,13 @@ A R script on translating PRS for clinical use by estimating the confidence boun
 
 # Using MCCP
 
-    'sh do_mccp_prs.sh $wdir $tr_file $te_file $y_col $prs_col c("$covar_col") $ofile'
+    sh do_mccp_prs.sh $wdir $tr_file $te_file $y_col $prs_col c("$covar_col") $ofile
 
  For example:
 
     sh do_mccp_prs.sh . train.prs test.prs 19 15 'c(2:7,12:13,22)' pred.out
-    
+
+
 -  Arguments
 ```
     $widr: working directory
