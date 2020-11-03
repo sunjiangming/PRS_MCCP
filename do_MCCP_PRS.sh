@@ -1,5 +1,6 @@
-module load R/3.4.2
-#set working directory, dir contains PRS profile
+# module load R/3.4.2 to have R enviroment
+# 
+#set working directory, e.g. dir contains PRS profile
 wdir=$1
 #input file for training and clibration -label-known set.
 tr_file=$2
