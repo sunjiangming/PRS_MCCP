@@ -101,14 +101,15 @@ if(impute==1){
 		    
 c_idx=c(prs_col,covar_col)
 
+#remove missing PRS
 NA_PRS_tr=is.na(df[,prs_col])
 NA_PRS_te=is.na(df2[,prs_col])
 ## training set, 0: control, 1:case
 y_train=df[!NA_PRS_tr,y_col]
-X_train=data.matrix(df[!NA_PRS_tr,c_idx])
+X_train=df[!NA_PRS_tr,c_idx]
 ## test set		    
 y_test=df[!NA_PRS_te,y_col]
-X_test=data.matrix(df[!NA_PRS_te,c_idx])
+X_test=df[!NA_PRS_te,c_idx]
 
 ## predicting		    
 p=predictCCP(parameters, X_train, y_train, X_test, y_test)
