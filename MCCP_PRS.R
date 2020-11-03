@@ -76,8 +76,8 @@ predictCCP <- function(parameters,X_train,y_train,X_test,y_test){
 }
 
 parameters <- list(
-	seed = 2018
-	multiPRS   = 0 
+	seed = 2018,
+	multiPRS   = 0, 
 	cores = 2
 )
 
