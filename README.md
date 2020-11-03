@@ -7,7 +7,7 @@ A R script on translating PRS for clinical use by estimating the confidence boun
 
 - Dependencies:
 
-    R packages: "glmnet", "doParallel", "foreach", "data.table","caret","impute"
+    R packages: "glmnet", "doParallel", "foreach", "data.table", "caret", "impute"
     
     R packages (for plot):"rms", "viridis", "ggplot2", "gridExtra", "MLmetrics"
 
