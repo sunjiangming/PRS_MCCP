@@ -16,11 +16,11 @@ A R script on translating PRS for clinical use by estimating the confidence boun
 
 Here you can esimate an individual’s disease susceptibility by
 
-    sh do_mccp_prs.sh $wdir $tr_file $te_file $y_col $prs_col c("$covar_col") $ofile
+    sh do_mccp_prs.sh $wdir $tr_file $te_file $y_col $prs_col c("$covar_col") $impute $ofile
 
  For example:
 
-    sh do_mccp_prs.sh . train.prs test.prs 19 15 'c(2:7,12:13,22)' pred.out
+    sh do_mccp_prs.sh . train.prs test.prs 19 15 'c(2:7,12:13,22)' 1 pred.out
 
 
 -  Arguments
@@ -31,6 +31,7 @@ Here you can esimate an individual’s disease susceptibility by
     $y_col: column number indciating the exact phenotype
     $prs_col: column number indciating PRS
     $covar_col: column numbers for covariates
+    $impute: set as 1 if impute missing values
     $ofile: output
 ```
 
