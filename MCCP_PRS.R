@@ -101,13 +101,13 @@ if(impute==1){
 		    
 c_idx=c(prs_col,covar_col)
 
-#remove missing values
-NA_tr=is.na(apply(df[,c(prs_col,y_col,covar_col)],1,function(x) is.na(x)))
-NA_te=is.na(apply(df2[,c(prs_col,y_col,covar_col)],1,function(x) is.na(x)))
-## training set, 0: control, 1:case
+## remove missing values
+NA_tr=apply(is.na(df[,c(c_idx,y_col)]), 1, function(x) sum(x) ) > 0
+NA_te=apply(is.na(df2[,c(c_idx,y_col)]), 1, function(x) sum(x) ) > 0
+# training set, 0: control, 1:case
 y_train=df[!NA_tr,y_col]
 X_train=df[!NA_tr,c_idx]
-## test set		    
+# test set		    
 y_test=df[!NA_te,y_col]
 X_test=df[!NA_te,c_idx]
 
