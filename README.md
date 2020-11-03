@@ -34,7 +34,7 @@ Here you can esimate an individual’s disease susceptibility by
     $ofile: output
 ```
 
-# Using MCCP in the way of cross-validation
+# Using MCCP for comparision
 
   This is script used in the paper to evaluate peformance of MCCP in group when compared to classical approach (top x% and bottom x% of PRS).
   
