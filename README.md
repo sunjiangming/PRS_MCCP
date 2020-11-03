@@ -6,8 +6,10 @@ A R script on translating PRS for clinical use by estimating the confidence boun
   `git clone https://github.com/sunjiangming/PRS_MCP`
 
 - Dependencies:
- R packages: "glmnet", "doParallel", "foreach", "data.table","caret","impute"
- R packages (for plot):"rms", "viridis", "ggplot2", "gridExtra", "MLmetrics"
+
+    R packages: "glmnet", "doParallel", "foreach", "data.table","caret","impute"
+    
+    R packages (for plot):"rms", "viridis", "ggplot2", "gridExtra", "MLmetrics"
 
 # Using deMeta
  'sh do_mccp_prs.sh \
