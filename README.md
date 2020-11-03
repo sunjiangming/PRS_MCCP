@@ -11,7 +11,7 @@ A R script on translating PRS for clinical use by estimating the confidence boun
     
     R packages (for plot):"rms", "viridis", "ggplot2", "gridExtra", "MLmetrics"
 
-# Using deMeta
+# Using MCCP
  'sh do_mccp_prs.sh \
     $wdir \
     $tr_file \
@@ -31,3 +31,5 @@ A R script on translating PRS for clinical use by estimating the confidence boun
     $covar_col: column numbers for covariates
     $ofile: output
 ```
+
+# Using MCCP in the way of cross-validation
