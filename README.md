@@ -32,3 +32,5 @@ A R script on translating PRS for clinical use by estimating the confidence boun
 ```
 
 # Using MCCP in the way of cross-validation
+
+  This is script used in the paper
