@@ -1,5 +1,5 @@
 # PRS_MCCP
-A R script on translating PRS for clinical use by estimating the confidence bound of risk prediction at an individual level
+A script on translating PRS for clinical use by estimating the confidence bound of risk prediction at an individual level
 
 # Getting Started
 - Clone this repository using the following git command:
