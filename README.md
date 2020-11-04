@@ -45,7 +45,7 @@ Here you can esimate an individual’s disease susceptibility by
 
 -  Outputs
 
-    In total, 6 columns would be reported. One can filter the predictions by setting a confidence level, as well as comparing prob_control and prob_case.
+    In total, 6 columns would be reported. One can filter the predictions by setting a confidence level, as well as comparing the prob_control and prob_case.
 ```
     predictStatus: Predicted disease status (1:disease; 0:control)
     
