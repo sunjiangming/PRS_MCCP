@@ -10,7 +10,7 @@ A script on translating PRS for clinical use by estimating the confidence bound 
 
     R packages: "glmnet", "doParallel", "foreach", "data.table", "caret" and "impute"
     
-    R packages (for comparisions): "rms" and "MLmetrics"
+    R packages (for comparisions): "rms"
 
 # Using MCCP
 
