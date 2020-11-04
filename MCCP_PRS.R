@@ -10,7 +10,7 @@ te_file=args[3]
 y_col=eval(parse(text=args[4]))
 prs_col=eval(parse(text=args[5]))
 covar_col=eval(parse(text=args[6]))
-impute=eval(parse(text=args[7]))
+isImpute=eval(parse(text=args[7]))
 ofile=args[8]
 
 computePValues <- function(parameters,X_properTrain,y_properTrain,X_calibration,y_calibration,X_test,y_test){
@@ -88,7 +88,7 @@ df<-fread(tr_file,head=T,data.table=FALSE)
 df2<-fread(te_file,head=T,data.table=FALSE)
 
 ## impute missing values by 10-NN
-if(impute==1){
+if(isImpute==1){
 	imputed2 <- impute.knn(as.matrix(df),k=10,rng.seed=parameters$seed)
 	df=imputed2$data
 	
