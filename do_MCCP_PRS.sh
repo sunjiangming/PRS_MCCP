@@ -1,5 +1,5 @@
 #!/bin/sh
-# module load R/3.4.2 or set R path to have R enviroment
+# module load R/4.0.2 or set R enviroment
 # 
 # set working directory, e.g. dir contains PRS profile
 wdir=$1
