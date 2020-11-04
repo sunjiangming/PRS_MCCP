@@ -20,30 +20,43 @@ Here you can esimate an individual’s disease susceptibility by
 
  For example:
 
-    sh do_mccp_prs.sh . train.prs test.prs 19 15 'c(2:7,12:13,22)' 1 pred.out
+    sh do_mccp_prs.sh . train.prs test.prs 19 15 'c(2:7,12:13,22)' 0 pred.out
 
 
 -  Arguments
 ```
     $widr: working directory
+    
     $tr_file: PRS file for training and calibration with known disease status(1:disease; 0:control)
+    
     $te_file: PRS file for predicting with unkown disease status as 0
-    $y_col: column number indciating the exact phenotype
+    
+    $y_col: column number indciating the phenotype of interest
+    
     $prs_col: column number indciating PRS
-    $covar_col: column numbers for covariates
+    
+    $covar_col: column numbers indciating covariates
+    
     $impute: set as 1 if impute missing values
-    $ofile: output
+    
+    $ofile: output file
 ```
 
 
 -  Outputs
+    In total, 6 columns were reported.
 ```
     predictStatus: Predicted disease status (1:disease; 0:control)
+    
     predictCredibility: Credibility of the prediction
+    
     predictConfidence: Confidence of the prediction
+    
     prob_control: Probability to be control
+    
     prob_case: Probability to be case
-    PRS: Polygenic risk scores
+    
+    PRS: Input Polygenic risk scores
 ```
 # Using MCCP for comparision
 
