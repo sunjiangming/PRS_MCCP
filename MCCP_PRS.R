@@ -84,11 +84,8 @@ parameters <- list(
 setwd(wdir)
 set.seed(parameters$seed)
 
-df<-fread(tr_file,head=T)
-df=as.data.frame(df)
-
-df2<-fread(te_file,head=T)
-df2=as.data.frame(df2)
+df<-fread(tr_file,head=T,data.table=FALSE)
+df2<-fread(te_file,head=T,data.table=FALSE)
 
 ## impute missing values by 10-NN
 if(impute==1){
