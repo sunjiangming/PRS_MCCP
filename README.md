@@ -8,9 +8,9 @@ A script on translating PRS for clinical use by estimating the confidence bound 
 
 - Prerequisites:
 
-    R packages: "glmnet", "doParallel", "foreach", "data.table", "caret", "impute"
+    R packages: "glmnet", "doParallel", "foreach", "data.table", "caret" and "impute"
     
-    R packages (for plot and comparisions):"rms", "viridis", "ggplot2", "gridExtra", "MLmetrics"
+    R packages (for comparisions): "rms" and "MLmetrics"
 
 # Using MCCP
 
@@ -60,7 +60,11 @@ Here you can esimate an individual’s disease susceptibility by
     PRS: Input Polygenic risk scores
 ```
     
-# Using MCCP for comparision
+# Using MCCP for performance evaluation
 
-  This is script used in the paper to evaluate peformance of MCCP in group when compared to classical approach (top x% and bottom x% of PRS).
+  This is the script used in our study to evaluate peformance of MCCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS). Nevertheless, the classical approach can't report confidence of prediction.
+  
+-  step1: run MCCP on respective datasets.
+
+-  step2: Compare performances with classical approach using AUC, PPV and NPV when same coverage are achieved.
   
