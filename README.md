@@ -35,6 +35,16 @@ Here you can esimate an individual’s disease susceptibility by
     $ofile: output
 ```
 
+
+-  Outputs
+```
+    predictStatus: Predicted disease status (1:disease; 0:control)
+    predictCredibility: Credibility of the prediction
+    predictConfidence: Confidence of the prediction
+    prob_control: Probability to be control
+    prob_case: Probability to be case
+    PRS: Polygenic risk scores
+```
 # Using MCCP for comparision
 
   This is script used in the paper to evaluate peformance of MCCP in group when compared to classical approach (top x% and bottom x% of PRS).
