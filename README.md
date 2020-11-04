@@ -25,7 +25,7 @@ Here you can esimate an individual’s disease susceptibility by
 
 -  Arguments
 ```
-    $widr: working directory
+    $wdir: working directory, e.g. places for inputs and outputs
     
     $tr_file: PRS file for training and calibration with known disease status(1:disease; 0:control)
     
