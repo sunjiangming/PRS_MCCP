@@ -1,9 +1,6 @@
 #!/usr/bin/env Rscript
 
 library(rms)
-library(viridis)
-library(ggplot2)
-library(gridExtra)
 library(caret)
 library(MLmetrics)
 
