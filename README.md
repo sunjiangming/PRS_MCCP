@@ -18,7 +18,7 @@ Here you can esimate an individual’s disease susceptibility by
 
     sh do_mccp_prs.sh $wdir $tr_file $te_file $y_col $prs_col c("$covar_col") $impute $ofile
 
- For example:
+    For example:
 
     sh do_mccp_prs.sh . train.prs test.prs 19 15 'c(2:7,12:13,22)' 0 pred.out
 
