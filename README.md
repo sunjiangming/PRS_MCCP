@@ -44,6 +44,7 @@ Here you can esimate an individual’s disease susceptibility by
 
 
 -  Outputs
+
     In total, 6 columns were reported.
 ```
     predictStatus: Predicted disease status (1:disease; 0:control)
