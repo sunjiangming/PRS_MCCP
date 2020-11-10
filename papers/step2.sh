@@ -1,8 +1,7 @@
 #!/bin/sh
 
-traits=( CAD T2D IBD BRCA )
+wdir='.'
+ifile='test.pred_for_step2'
+output='test_output'
 
-for i in ${traits[@]}
-do
- Rscript performance.R $i"mccp_p05_PRS_pheno.pred.addPCs.tsv" $i
-done
+Rscript performance.R $wdir $ifile "score" 'c(6:9)' $output
