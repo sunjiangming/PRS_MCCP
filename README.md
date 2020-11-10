@@ -44,7 +44,7 @@ Here you can esimate an individual’s disease susceptibility by
     
     $covar_col: column numbers indciating covariates
     
-    $impute: set as 1 if impute missing values
+    $impute: set as 1 if you want to impute missing values
     
     $ofile: output file
 ```
