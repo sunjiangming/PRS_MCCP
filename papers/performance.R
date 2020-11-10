@@ -1,8 +1,7 @@
 #!/usr/bin/env Rscript
 
-library("pROC")
-library("rms")
-
+library(pROC)
+library(rms)
 library(viridis)
 library(ggplot2)
 
