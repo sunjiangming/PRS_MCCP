@@ -17,7 +17,7 @@ A script on translating PRS for clinical use by estimating the confidence bound 
     
     Mac OSX
     
-    Essentially, R codes can also run under Windows enviroments
+    The package has been tested on macOS Mojave (10.14.1) and Linux (Red Hat Enterprise Linux Server release 7.6). Essentially, R codes can also run under Windows enviroments.
 
 # Using MCCP
 
