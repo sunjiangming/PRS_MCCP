@@ -2,38 +2,19 @@
 
 cd .
 
-#CAD
-Rscript MCCP_PRS_kFold.R \
-. \
-UKB_PRS05_meta_4MCCP.noMissing.txt \
-19 \
-15 \
-'c(2:7,12:13,22)' \
-CAD_mccp_p05_PRS_pheno.pred
+wdir='.'
+ifile='test_data.tsv'
+ofile='test.pred'
 
-#T2D
+# run MCCP on test data using 5-fold cross-validation
 Rscript MCCP_PRS_kFold.R \
-. \
-UKB_PRS05_meta_4MCCP.noMissing.txt \
-21 \
-17 \
-'c(2:7,12:13,22)' \
-T2D_mccp_p05_PRS_pheno.pred
+$wdir \
+$ifile \
+2 \
+3 \
+'c(4)' \
+$ofile
 
-#IBD
-Rscript MCCP_PRS_kFold.R \
-. \
-UKB_PRS05_meta_4MCCP.noMissing.txt \
-20 \
-16 \
-'c(2:7,12:13,22)' \
-IBD_mccp_p05_PRS_pheno.pred
-
-#BCAC
-Rscript MCCP_PRS_kFold.R \
-. \
-UKB_PRS05_meta_4MCCP.noMissing.females.txt \
-18 \
-14 \
-'c(2:7,12:13,22)' \
-BCAC_mccp_p05_PRS_pheno.pred
+###add covariates for step2
+awk 'BEGIN{FS="\t";OFS="\t"} NR==FNR{a[$1]=$0;next} {if($1 in a) print $0,a[$1]}' \
+$ifile $ofile | cut -f 1-5,9- > $ofile"_for_step2"
