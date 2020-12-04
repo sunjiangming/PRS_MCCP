@@ -19,7 +19,7 @@ A script on translating PRS for clinical use by estimating the confidence bound 
     
     The package has been tested on macOS Mojave (10.14.6) and Linux (Red Hat Enterprise Linux Server release 7.6). Essentially, R codes can also run under Windows enviroments.
 
-# Using MCCP
+# Using PRS-MCP
 
 Here you can esimate an individual’s disease susceptibility by
 
@@ -67,7 +67,7 @@ Here you can esimate an individual’s disease susceptibility by
     PRS: Input Polygenic risk scores
 ```
     
-# Using MCCP for performance evaluation
+# Using PRS-MCP for performance evaluation
 
   This is the script used in our study to evaluate peformance of MCCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS). Nevertheless, the classical approach can't report confidence of prediction.
   
