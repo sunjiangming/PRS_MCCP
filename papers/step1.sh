@@ -6,7 +6,7 @@ wdir='.'
 ifile='test_data.tsv'
 ofile='test.pred'
 
-# run MCCP on test data using 5-fold cross-validation
+# run PRS-MCP on test data using 5-fold cross-validation
 Rscript MCCP_PRS_kFold.R \
 $wdir \
 $ifile \
