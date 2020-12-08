@@ -1,4 +1,4 @@
-# PRS-MCP
+# PRS-MCCP
 A script on translating PRS for clinical use by estimating the confidence bound of risk prediction at an individual level
 
 # Getting Started
@@ -19,7 +19,7 @@ A script on translating PRS for clinical use by estimating the confidence bound 
     
     The package has been tested on macOS Mojave (10.14.6) and Linux (Red Hat Enterprise Linux Server release 7.6). Essentially, R codes can also run under Windows enviroments.
 
-# Using PRS-MCP
+# Using PRS-MCCP
 
 Here you can esimate an individual’s disease susceptibility by
 
@@ -69,13 +69,13 @@ Here you can esimate an individual’s disease susceptibility by
     
 # Example
 
-  Under directory "papers", you can find scripts used in the manuscript to evaluate peformances of PRS-MCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS).
+  Under directory "papers", you can find scripts used in the manuscript to evaluate peformances of PRS-MCCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS).
  
  ``` 
      cd papers 
  ``` 
  
--  step1: Run PRS-MCP to a random generated data set (not linked with any real world data, just an example showing how to run the script). This only gives probablities to be case (p1) and control (p0) for each individual, respectively. Results file is "test.pred"
+-  step1: Run PRS-MCCP to a random generated data set (not linked with any real world data, just an example showing how to run the script). This only gives probablities to be case (p1) and control (p0) for each individual, respectively. Results file is "test.pred"
 ```
     sh step1.sh
 ```
