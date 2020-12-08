@@ -71,10 +71,10 @@ Here you can esimate an individual’s disease susceptibility by
 
   This is the script used in our study to evaluate peformance of MCCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS).
   
--  step1: run MCCP to a toy data set.
+-  step1: run MCCP to a toy data set. This only gives probablities to be case and control for each individual, respectively.
 
     sh step1.sh
 
--  step2: Compare performances with classical approach using AUC, PPV and NPV when same coverage are achieved.
+-  step2: Compare performances with classical approach using AUC, PPV and NPV when same coverage are achieved. May take long time when estimate 95% confidence of intervals of AUC, PPV and NPV.
 
     sh step2.sh
