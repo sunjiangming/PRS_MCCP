@@ -34,9 +34,9 @@ Here you can esimate an individual’s disease susceptibility by
 ```
     $wdir: working directory, e.g. places for inputs and outputs
     
-    $tr_file: PRS file for training and calibration with known disease status(1:disease; 0:control)
+    $tr_file: input file including PRS for training and calibration with known disease status(1:disease; 0:control)
     
-    $te_file: PRS file for predicting with unkown disease status as 0
+    $te_file: input file including PRS for predicting with unkown disease status as 0
     
     $y_col: column number indciating the phenotype of interest
     
