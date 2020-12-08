@@ -67,7 +67,7 @@ Here you can esimate an individual’s disease susceptibility by
     PRS: Input Polygenic risk scores
 ```
     
-# An example of implementing PRS-MCP
+# Example
 
   This is the script used in the manuscript to evaluate peformances of MCCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS).
   
