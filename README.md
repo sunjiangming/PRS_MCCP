@@ -69,9 +69,12 @@ Here you can esimate an individual’s disease susceptibility by
     
 # Using PRS-MCP for performance evaluation
 
-  This is the script used in our study to evaluate peformance of MCCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS). Nevertheless, the classical approach can't report confidence of prediction.
+  This is the script used in our study to evaluate peformance of MCCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS).
   
--  step1: run MCCP on respective datasets.
+-  step1: run MCCP to a toy data set.
+
+    sh step1.sh
 
 -  step2: Compare performances with classical approach using AUC, PPV and NPV when same coverage are achieved.
-  
+
+    sh step2.sh
