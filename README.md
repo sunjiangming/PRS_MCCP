@@ -75,6 +75,6 @@ Here you can esimate an individual’s disease susceptibility by
 
     sh step1.sh
 
--  step2: Compare performances with top and bottom x%PRS approach using AUC, PPV and NPV when same coverage are achieved. May take long time when estimate 95% confidence intervals of AUC, PPV and NPV. This will save Rdata and produce three figures.
+-  step2: Compare performances with top and bottom x%PRS approach using AUC, PPV and NPV when same coverage are achieved. May take long time when estimate 95% confidence intervals of AUC, PPV and NPV. This will save a Rdata and produce three figures.
 
     sh step2.sh
