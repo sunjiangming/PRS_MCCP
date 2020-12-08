@@ -71,10 +71,10 @@ Here you can esimate an individual’s disease susceptibility by
 
   This is the script used in the manuscript to evaluate peformances of MCCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS).
   
--  step1: Run PRS-MCP to a random generated data set (not linked with any real world data, just an example showing how to run the script). This only gives probablities to be case (p1) and control (p0) for each individual, respectively.
+-  step1: Run PRS-MCP to a random generated data set (not linked with any real world data, just an example showing how to run the script). This only gives probablities to be case (p1) and control (p0) for each individual, respectively. results file is "test.pred"
 
     sh step1.sh
 
--  step2: Compare performances with top and bottom x%PRS approach using AUC, PPV and NPV when same coverage are achieved. May take long time when estimate 95% confidence intervals of AUC, PPV and NPV.
+-  step2: Compare performances with top and bottom x%PRS approach using AUC, PPV and NPV when same coverage are achieved. May take long time when estimate 95% confidence intervals of AUC, PPV and NPV. This will save Rdata and produce three figures.
 
     sh step2.sh
