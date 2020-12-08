@@ -69,8 +69,11 @@ Here you can esimate an individual’s disease susceptibility by
     
 # Example
 
-  This is the script used in the manuscript to evaluate peformances of MCCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS).
-  
+  Under directory "papers", you can find scripts used in the manuscript to evaluate peformances of PRS-MCP when disease status are known for both training and test set. Performances in group can be compared with classical approach (top x% and bottom x% of PRS).
+ 
+ ``` 
+  cd papers 
+ ``` 
 -  step1: Run PRS-MCP to a random generated data set (not linked with any real world data, just an example showing how to run the script). This only gives probablities to be case (p1) and control (p0) for each individual, respectively. Results file is "test.pred"
 ```
     sh step1.sh
