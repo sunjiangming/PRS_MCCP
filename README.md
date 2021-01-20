@@ -4,7 +4,7 @@ A script on translating PRS for clinical use by estimating the confidence bound 
 # Getting Started
 - Clone this repository using the following git command:
 
-  `git clone https://github.com/sunjiangming/PRS_MCP`
+  `git clone https://github.com/sunjiangming/PRS_MCCP`
 
 - Prerequisites:
 
