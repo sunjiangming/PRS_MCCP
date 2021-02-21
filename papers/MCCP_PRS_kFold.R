@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-pkgs <- list("glmnet", "doParallel", "foreach", "data.table","caret","impute")
+pkgs <- list("glmnet", "doParallel", "foreach", "data.table","caret","impute","Zelig")
 lapply(pkgs, require, character.only = T)
 
 args = commandArgs(trailingOnly=TRUE)
@@ -73,6 +73,30 @@ predictCCP <- function(parameters,X_train,y_train,X_test,y_test){
 	return(p)
 }
 
+predictLR <- function(X_train,y_train,X_test,y_test){
+  set.seed(2018)
+  
+  df_glm = data.frame(y_train,X_train)
+  
+  df_glm_weights=rep(1,length(y_train))
+  # assume 1 is minority, 0 is majority
+  df_glm_weights[y_train==1] = round( ( (2 * sum(y_train == 0)) /length(y_train) )*length(y_train) / (2 * sum(y_train == 1)) )
+  
+  fit <- zelig(factor(y_train) ~ ., model = "logit", weights = df_glm_weights,
+                  data = df_glm, cite = FALSE)
+  #
+  #fit <- glm(factor(y_train) ~. , weights=df_glm_weights, family = binomial(link='logit'), data=df_glm)
+  if(dim(df_glm)[2]==2){
+    y_test_prob = predict(fit,data.frame(X_train=X_test),type="response")
+  } else {
+    y_test_prob = predict(fit,data.frame(X_test),type="response")
+  }
+  
+  names(y_test_prob)="logit_prob"
+  p = y_test_prob
+  return(p)
+}
+
 parameters <- list(
 	# General Parameters
 	seed  = 2018,
@@ -118,13 +142,15 @@ for(i in 1:5) {
 	y_test = label[test_idx]
 	test_IID=IID[test_idx]
 	
+	logit_p = predictLR(X_train, y_train, X_test, y_test)
+	
 	p=predictCCP(parameters, X_train, y_train, X_test, y_test)
 	
 	if( length(c_idx)>1 ) {
-	  output=data.frame(IID=test_IID,Y_test_label=y_test, p0=p$p0, p1=p$p1, score=as.numeric(X_test[,1]))
+	  output=data.frame(IID=test_IID,Y_test_label=y_test, p0=p$p0, p1=p$p1, logit_prob=logit_p, score=as.numeric(X_test[,1]))
     	}
     	if( length(c_idx)==1 ) {
-	  output=data.frame(IID=test_IID,Y_test_label=y_test, p0=p$p0, p1=p$p1, score=as.numeric(X_test))
+	  output=data.frame(IID=test_IID,Y_test_label=y_test, p0=p$p0, p1=p$p1, logit_prob=logit_p, score=as.numeric(X_test))
  	}
 
 	if(i==1) { write.table(output,ofile,quote=F,sep="\t",row.names=F)
