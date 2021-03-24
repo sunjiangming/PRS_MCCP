@@ -60,9 +60,9 @@ Here you can esimate an individual’s disease susceptibility by
     
     predictConfidence: Confidence of the prediction
     
-    prob_control: Probability value to be control
+    prob_control: Probability value being control
     
-    prob_case: Probability value to be case
+    prob_case: Probability value being case
     
     PRS: Input Polygenic risk scores
 ```
