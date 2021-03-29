@@ -163,7 +163,7 @@ for(i in 1:len){
 }
 
 
-##Rdata
+##Save Rdata
 
 PPVs=rbind(data.frame(alpha=eff,value=mccp_ppv,value_lower=mccp_ppv_lower, value_upper=mccp_ppv_upper, g=rep(gname,len),col=ranges,disease=rep(disease,len)),data.frame(alpha=eff,value=ppv,value_lower=ppv_lower, value_upper=ppv_upper,g=rep("Empirical",len),col=rep(NA,len),disease=rep(disease,len) ))
 NPVs=rbind(data.frame(alpha=eff,value=mccp_npv,value_lower=mccp_npv_lower, value_upper=mccp_npv_upper, g=rep(gname,len),col=ranges,disease=rep(disease,len)),data.frame(alpha=eff,value=npv,value_lower=npv_lower, value_upper=npv_upper,g=rep("Empirical",len),col=rep(NA,len),disease=rep(disease,len) ))
@@ -171,7 +171,7 @@ AUCs=rbind(data.frame(alpha=eff,value=mccp_auc,value_lower=mccp_auc_lower, value
 
 save(PPVs, NPVs, AUCs, file = paste(output,".RData",sep=""))
 
-#plot
+##plot
 
 p1<-ggplot(PPVs,aes(alpha,value,group=g)) +
   geom_line(aes(linetype=g,color=g)) +
@@ -237,5 +237,3 @@ p3<-ggplot(AUCs,aes(alpha,value,group=g)) +
 ggsave(paste0(output,"_PPVs.pdf"),p1)
 ggsave(paste0(output,"_NPVs.pdf"),p2)
 ggsave(paste0(output,"_AUCs.pdf"),p3)
-
-
