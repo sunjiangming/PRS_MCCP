@@ -75,7 +75,7 @@ Here you can esimate an individual’s disease susceptibility by
      cd papers 
  ``` 
  
--  step1: Run PRS-MCCP to a random generated data set (not linked with any real world data, just an example showing how to run the script). This only gives probablitiy values to be case (p1) and control (p0) for each individual, respectively. Results file is "test.pred"
+-  step1: Run PRS-MCCP to a random generated data set (not linked with any real world data, just an example showing how to run the script). This only gives probablitiy values to be case (p1) and control (p0) for each individual, respectively. Less than 1 minute on a Mac Pro 2020, results file "test.pred" would be generated.
 ```
     sh step1.sh
 ```
