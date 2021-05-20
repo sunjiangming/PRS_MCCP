@@ -17,4 +17,4 @@ $ofile
 
 ###add covariates for step2
 awk 'BEGIN{FS="\t";OFS="\t"} NR==FNR{a[$1]=$0;next} {if($1 in a) print $0,a[$1]}' \
-$ifile $ofile | cut -f 1-5,9- > $ofile"_for_step2"
+$ifile $ofile | cut -f 1-6,9- > $ofile"_for_step2"
