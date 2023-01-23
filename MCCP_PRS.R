@@ -105,8 +105,8 @@ NA_te=apply(is.na(df2[,c(c_idx,y_col)]), 1, function(x) sum(x) ) > 0
 y_train=df[!NA_tr,y_col]
 X_train=df[!NA_tr,c_idx]
 # test set		    
-y_test=df[!NA_te,y_col]
-X_test=df[!NA_te,c_idx]
+y_test=df2[!NA_te,y_col]
+X_test=df2[!NA_te,c_idx]
 
 ## predicting		    
 p=predictCCP(parameters, X_train, y_train, X_test, y_test)
